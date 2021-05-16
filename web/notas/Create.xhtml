@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateNotasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.CreateNotasLabel_calificacion}" for="calificacion" />
+                    <h:inputText id="calificacion" value="#{notasController.selected.calificacion}" title="#{bundle.CreateNotasTitle_calificacion}" />
+                    <h:outputLabel value="#{bundle.CreateNotasLabel_periodo}" for="periodo" />
+                    <h:inputText id="periodo" value="#{notasController.selected.periodo}" title="#{bundle.CreateNotasTitle_periodo}" />
+                    <h:outputLabel value="#{bundle.CreateNotasLabel_alumnosDocumento}" for="alumnosDocumento" />
+                    <h:selectOneMenu id="alumnosDocumento" value="#{notasController.selected.alumnosDocumento}" title="#{bundle.CreateNotasTitle_alumnosDocumento}" required="true" requiredMessage="#{bundle.CreateNotasRequiredMessage_alumnosDocumento}">
+                        <f:selectItems value="#{alumnosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateNotasLabel_asignaturaCodigo}" for="asignaturaCodigo" />
+                    <h:selectOneMenu id="asignaturaCodigo" value="#{notasController.selected.asignaturaCodigo}" title="#{bundle.CreateNotasTitle_asignaturaCodigo}" required="true" requiredMessage="#{bundle.CreateNotasRequiredMessage_asignaturaCodigo}">
+                        <f:selectItems value="#{asignaturasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{notasController.create}" value="#{bundle.CreateNotasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{notasController.prepareList}" value="#{bundle.CreateNotasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateNotasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
