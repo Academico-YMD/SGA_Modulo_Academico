@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewNotasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewNotasLabel_idnotas}"/>
+                    <h:outputText value="#{notasController.selected.idnotas}" title="#{bundle.ViewNotasTitle_idnotas}"/>
+                    <h:outputText value="#{bundle.ViewNotasLabel_calificacion}"/>
+                    <h:outputText value="#{notasController.selected.calificacion}" title="#{bundle.ViewNotasTitle_calificacion}"/>
+                    <h:outputText value="#{bundle.ViewNotasLabel_periodo}"/>
+                    <h:outputText value="#{notasController.selected.periodo}" title="#{bundle.ViewNotasTitle_periodo}"/>
+                    <h:outputText value="#{bundle.ViewNotasLabel_alumnosDocumento}"/>
+                    <h:outputText value="#{notasController.selected.alumnosDocumento}" title="#{bundle.ViewNotasTitle_alumnosDocumento}"/>
+                    <h:outputText value="#{bundle.ViewNotasLabel_asignaturaCodigo}"/>
+                    <h:outputText value="#{notasController.selected.asignaturaCodigo}" title="#{bundle.ViewNotasTitle_asignaturaCodigo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{notasController.destroyAndView}" value="#{bundle.ViewNotasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewNotasEditLink}"/>
+                <br />
+                <h:commandLink action="#{notasController.prepareCreate}" value="#{bundle.ViewNotasCreateLink}" />
+                <br />
+                <h:commandLink action="#{notasController.prepareList}" value="#{bundle.ViewNotasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewNotasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
